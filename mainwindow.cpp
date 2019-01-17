@@ -20,6 +20,13 @@ void MainWindow::on_x0y0_clicked()
     try{
         currentGame->move(0,0);
         ui->x0y0->setText(currentGame->getPlayerName());
+        if(currentGame->getWinnerName() != "none"){
+            QMessageBox msg;
+            msg.setWindowTitle("Winner");
+            msg.setText(currentGame->getWinnerName());
+            msg.exec();
+        }
+        currentGame->changePlayer();
     }
     catch(QString ex){
         QMessageBox msg;
@@ -35,6 +42,13 @@ void MainWindow::on_x1y0_clicked()
     try{
         currentGame->move(1,0);
         ui->x1y0->setText(currentGame->getPlayerName());
+        if(currentGame->getWinnerName() != "none"){
+            QMessageBox msg;
+            msg.setWindowTitle("Winner");
+            msg.setText(currentGame->getWinnerName());
+            msg.exec();
+        }
+        currentGame->changePlayer();
     }
     catch(QString ex){
         QMessageBox msg;
@@ -50,6 +64,13 @@ void MainWindow::on_x2y0_clicked()
     try{
         currentGame->move(2,0);
         ui->x2y0->setText(currentGame->getPlayerName());
+        if(currentGame->getWinnerName() != "none"){
+            QMessageBox msg;
+            msg.setWindowTitle("Winner");
+            msg.setText(currentGame->getWinnerName());
+            msg.exec();
+        }
+        currentGame->changePlayer();
     }
     catch(QString ex){
         QMessageBox msg;
@@ -57,6 +78,7 @@ void MainWindow::on_x2y0_clicked()
         msg.setText(ex);
         msg.exec();
     }
+
 }
 
 void MainWindow::on_x0y1_clicked()
@@ -64,6 +86,13 @@ void MainWindow::on_x0y1_clicked()
     try{
         currentGame->move(0,1);
         ui->x0y1->setText(currentGame->getPlayerName());
+        if(currentGame->getWinnerName() != "none"){
+            QMessageBox msg;
+            msg.setWindowTitle("Winner");
+            msg.setText(currentGame->getWinnerName());
+            msg.exec();
+        }
+        currentGame->changePlayer();
     }
     catch(QString ex){
         QMessageBox msg;
@@ -71,6 +100,7 @@ void MainWindow::on_x0y1_clicked()
         msg.setText(ex);
         msg.exec();
     }
+
 }
 
 void MainWindow::on_x1y1_clicked()
@@ -78,6 +108,13 @@ void MainWindow::on_x1y1_clicked()
     try{
         currentGame->move(1,1);
         ui->x1y1->setText(currentGame->getPlayerName());
+        if(currentGame->getWinnerName() != "none"){
+            QMessageBox msg;
+            msg.setWindowTitle("Winner");
+            msg.setText(currentGame->getWinnerName());
+            msg.exec();
+        }
+        currentGame->changePlayer();
     }
     catch(QString ex){
         QMessageBox msg;
@@ -85,6 +122,7 @@ void MainWindow::on_x1y1_clicked()
         msg.setText(ex);
         msg.exec();
     }
+
 }
 
 void MainWindow::on_x2y1_clicked()
@@ -92,6 +130,13 @@ void MainWindow::on_x2y1_clicked()
     try{
         currentGame->move(2,1);
         ui->x2y1->setText(currentGame->getPlayerName());
+        if(currentGame->getWinnerName() != "none"){
+            QMessageBox msg;
+            msg.setWindowTitle("Winner");
+            msg.setText(currentGame->getWinnerName());
+            msg.exec();
+        }
+        currentGame->changePlayer();
     }
     catch(QString ex){
         QMessageBox msg;
@@ -99,6 +144,7 @@ void MainWindow::on_x2y1_clicked()
         msg.setText(ex);
         msg.exec();
     }
+
 }
 
 void MainWindow::on_x0y2_clicked()
@@ -106,6 +152,13 @@ void MainWindow::on_x0y2_clicked()
     try{
         currentGame->move(0,2);
         ui->x0y2->setText(currentGame->getPlayerName());
+        if(currentGame->getWinnerName() != "none"){
+            QMessageBox msg;
+            msg.setWindowTitle("Winner");
+            msg.setText(currentGame->getWinnerName());
+            msg.exec();
+        }
+        currentGame->changePlayer();
     }
     catch(QString ex){
         QMessageBox msg;
@@ -113,6 +166,7 @@ void MainWindow::on_x0y2_clicked()
         msg.setText(ex);
         msg.exec();
     }
+
 }
 
 void MainWindow::on_x1y2_clicked()
@@ -120,6 +174,13 @@ void MainWindow::on_x1y2_clicked()
     try{
         currentGame->move(1,2);
         ui->x1y2->setText(currentGame->getPlayerName());
+        if(currentGame->getWinnerName() != "none"){
+            QMessageBox msg;
+            msg.setWindowTitle("Winner");
+            msg.setText(currentGame->getWinnerName());
+            msg.exec();
+        }
+        currentGame->changePlayer();
     }
     catch(QString ex){
         QMessageBox msg;
@@ -127,6 +188,7 @@ void MainWindow::on_x1y2_clicked()
         msg.setText(ex);
         msg.exec();
     }
+
 }
 
 void MainWindow::on_x2y2_clicked()
@@ -134,6 +196,13 @@ void MainWindow::on_x2y2_clicked()
     try{
         currentGame->move(2,2);
         ui->x2y2->setText(currentGame->getPlayerName());
+        if(currentGame->getWinnerName() != "none"){
+            QMessageBox msg;
+            msg.setWindowTitle("Winner");
+            msg.setText(currentGame->getWinnerName());
+            msg.exec();
+        }
+        currentGame->changePlayer();
     }
     catch(QString ex){
         QMessageBox msg;
@@ -141,4 +210,5 @@ void MainWindow::on_x2y2_clicked()
         msg.setText(ex);
         msg.exec();
     }
+
 }

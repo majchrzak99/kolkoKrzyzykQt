@@ -21,6 +21,8 @@ public:
     void setPlayer(mark player);
     void move(unsigned short posX, unsigned short posY);
     void changePlayer();
+    mark checkWin();
+    QString getWinnerName();
 private:
     QVector<QVector<mark>> board;
     mark player;

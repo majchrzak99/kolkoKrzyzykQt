@@ -37,7 +37,6 @@ void game::setupBoard(){
 void game::move(unsigned short posX, unsigned short posY){
     if(this->boardValue(posX,posY) == mark::none){
         setBoardValue(posX,posY,this->getPlayer());
-        changePlayer();
     }
     else {
         QString ex = "Can't move, position isn't empty";
@@ -63,4 +62,35 @@ QString game::getPlayerName(){
     else {
         return " ";
     }
+}
+
+mark game::checkWin(){
+    for(unsigned short y=0;y<3;y++){
+        if(this->boardValue(0,y) == this->boardValue(1,y) && this->boardValue(0,y) == this->boardValue(2,y) ){
+            return this->boardValue(0,y);
+        }
+    }
+    for(unsigned short x=0;x<3;x++){
+        if(this->boardValue(x,0) == this->boardValue(x,1) && this->boardValue(x,0) == this->boardValue(x,2) ){
+            return this->boardValue(x,0);
+        }
+    }
+    if(this->boardValue(2,0) == this->boardValue(1,1) && this->boardValue(2,0) == this->boardValue(0,2)){
+        return this->boardValue(2,0);
+    }
+    if(this->boardValue(0,0) == this->boardValue(1,1) && this->boardValue(0,0) == this->boardValue(2,2)){
+        return this->boardValue(0,0);
+    }
+    return mark::none;
+}
+
+QString game::getWinnerName(){
+    mark winner = checkWin();
+    if(winner == mark::cross){
+        return "Won cross";
+    }
+    if(winner == mark::circle){
+        return "Won circle";
+    }
+    return "none";
 }
