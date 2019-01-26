@@ -7,7 +7,8 @@
 
 enum class msgType{
     winner,
-    error
+    error,
+    fullBoard
 };
 
 namespace Ui {

@@ -5,6 +5,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+    setWindowIcon(QIcon(":/icons/icons/tic-tac-toe-icon.png"));
     currentGame = new game;
     ui->setupUi(this);
 }
@@ -19,13 +20,24 @@ void MainWindow::displayMSG(msgType type){
     if(type == msgType::winner){
         QMessageBox msg;
         msg.setWindowTitle("Winner");
+        msg.setWindowIcon(QIcon(":/icons/icons/info.png"));
         msg.setText(currentGame->getWinnerName());
+        msg.setIcon(QMessageBox::Information);
         msg.exec();
 
     }else if(type == msgType::error){
         QMessageBox msg;
         msg.setWindowTitle("Error");
+        msg.setWindowIcon(QIcon(":/icons/icons/error.png"));
+        msg.setIcon(QMessageBox::Warning);
         msg.setText("Something went wrong");
+        msg.exec();
+    }else if(type == msgType::fullBoard){
+        QMessageBox msg;
+        msg.setWindowTitle("Error");
+        msg.setWindowIcon(QIcon(":/icons/icons/info.png"));
+        msg.setIcon(QMessageBox::Warning);
+        msg.setText("No move");
         msg.exec();
     }
 }
@@ -35,6 +47,8 @@ void MainWindow::displayMSG(msgType type, QString msgText){
             QMessageBox msg;
             msg.setWindowTitle("Error");
             msg.setText(msgText);
+            msg.setWindowIcon(QIcon(":/icons/icons/error.png"));
+            msg.setIcon(QMessageBox::Warning);
             msg.exec();
     }else if(type == msgType::winner){
         displayMSG(type);
@@ -68,7 +82,12 @@ void MainWindow::on_x0y0_clicked()
            displayMSG(msgType::winner);
            clearBoardUi();
            currentGame->nextTurn();
-
+        }else{
+            if(currentGame->isFullBoard()){
+                displayMSG(msgType::fullBoard);
+                clearBoardUi();
+                currentGame->nextTurn();
+            }
         }
         currentGame->changePlayer();
     }
@@ -88,7 +107,14 @@ void MainWindow::on_x1y0_clicked()
            clearBoardUi();
            currentGame->nextTurn();
 
+        }else{
+            if(currentGame->isFullBoard()){
+                displayMSG(msgType::fullBoard);
+                clearBoardUi();
+                currentGame->nextTurn();
+            }
         }
+
         currentGame->changePlayer();
     }
     catch(QString ex){
@@ -107,6 +133,12 @@ void MainWindow::on_x2y0_clicked()
            clearBoardUi();
            currentGame->nextTurn();
 
+        }else{
+            if(currentGame->isFullBoard()){
+                displayMSG(msgType::fullBoard);
+                clearBoardUi();
+                currentGame->nextTurn();
+            }
         }
         currentGame->changePlayer();
     }
@@ -126,6 +158,12 @@ void MainWindow::on_x0y1_clicked()
            clearBoardUi();
            currentGame->nextTurn();
 
+        }else{
+            if(currentGame->isFullBoard()){
+                displayMSG(msgType::fullBoard);
+                clearBoardUi();
+                currentGame->nextTurn();
+            }
         }
         currentGame->changePlayer();
     }
@@ -145,6 +183,12 @@ void MainWindow::on_x1y1_clicked()
            clearBoardUi();
            currentGame->nextTurn();
 
+        }else{
+            if(currentGame->isFullBoard()){
+                displayMSG(msgType::fullBoard);
+                clearBoardUi();
+                currentGame->nextTurn();
+            }
         }
         currentGame->changePlayer();
     }
@@ -164,6 +208,12 @@ void MainWindow::on_x2y1_clicked()
            clearBoardUi();
            currentGame->nextTurn();
 
+        }else{
+            if(currentGame->isFullBoard()){
+                displayMSG(msgType::fullBoard);
+                clearBoardUi();
+                currentGame->nextTurn();
+            }
         }
         currentGame->changePlayer();
     }
@@ -183,6 +233,12 @@ void MainWindow::on_x0y2_clicked()
            clearBoardUi();
            currentGame->nextTurn();
 
+        }else{
+            if(currentGame->isFullBoard()){
+                displayMSG(msgType::fullBoard);
+                clearBoardUi();
+                currentGame->nextTurn();
+            }
         }
         currentGame->changePlayer();
     }
@@ -202,6 +258,12 @@ void MainWindow::on_x1y2_clicked()
            clearBoardUi();
            currentGame->nextTurn();
 
+        }else{
+            if(currentGame->isFullBoard()){
+                displayMSG(msgType::fullBoard);
+                clearBoardUi();
+                currentGame->nextTurn();
+            }
         }
         currentGame->changePlayer();
     }
@@ -221,6 +283,12 @@ void MainWindow::on_x2y2_clicked()
            clearBoardUi();
            currentGame->nextTurn();
 
+        }else{
+            if(currentGame->isFullBoard()){
+                displayMSG(msgType::fullBoard);
+                clearBoardUi();
+                currentGame->nextTurn();
+            }
         }
         currentGame->changePlayer();
     }

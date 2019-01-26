@@ -25,7 +25,6 @@ void game::setPlayer(mark move){
     player = move;
 }
 void game::setupBoard(){
-
         for(unsigned short y=0;y<3;y++){
             if(board.size()<3){
                 QVector<mark> temp(3);
@@ -117,3 +116,13 @@ unsigned short game::getScore(mark player){
     return 0;
 }
 
+bool game::isFullBoard(){
+    for(unsigned short y=0;y<3;y++){
+        for(unsigned short x=0;x<3;x++){
+            if(this->boardValue(x,y) == mark::none){
+                return false;
+            }
+        }
+    }
+    return true;
+}

@@ -25,6 +25,7 @@ public:
     QString getWinnerName();
     void nextTurn();
     unsigned short getScore(mark player);
+    bool isFullBoard();
 private:
     void setupBoard();
     QVector<QVector<mark>> board;
@@ -32,7 +33,6 @@ private:
     mark startingPlayer;
     unsigned short scoreCross;
     unsigned short scoreCircle;
-
 };
 
 #endif // GAME_H

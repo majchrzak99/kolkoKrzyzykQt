@@ -14,11 +14,13 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QGridLayout>
+#include <QtWidgets/QLCDNumber>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QStatusBar>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -27,7 +29,6 @@ class Ui_MainWindow
 {
 public:
     QAction *actionNew_game;
-    QAction *actionC;
     QAction *actionCredits;
     QAction *actionExit;
     QWidget *centralWidget;
@@ -54,19 +55,22 @@ public:
     QPushButton *x2y1;
     QFrame *line_12;
     QPushButton *x0y0;
+    QWidget *verticalLayoutWidget;
+    QVBoxLayout *verticalLayout;
+    QLabel *cross_score_label;
+    QLCDNumber *cross_score;
+    QLabel *circle_score_label;
+    QLCDNumber *circle_score;
     QMenuBar *menuBar;
     QMenu *menuFile;
-    QStatusBar *statusBar;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(618, 533);
+        MainWindow->resize(780, 506);
         actionNew_game = new QAction(MainWindow);
         actionNew_game->setObjectName(QStringLiteral("actionNew_game"));
-        actionC = new QAction(MainWindow);
-        actionC->setObjectName(QStringLiteral("actionC"));
         actionCredits = new QAction(MainWindow);
         actionCredits->setObjectName(QStringLiteral("actionCredits"));
         actionExit = new QAction(MainWindow);
@@ -228,20 +232,45 @@ public:
 
         gridLayout->addWidget(x0y0, 0, 0, 1, 1);
 
+        verticalLayoutWidget = new QWidget(centralWidget);
+        verticalLayoutWidget->setObjectName(QStringLiteral("verticalLayoutWidget"));
+        verticalLayoutWidget->setGeometry(QRect(610, 20, 161, 451));
+        verticalLayout = new QVBoxLayout(verticalLayoutWidget);
+        verticalLayout->setSpacing(6);
+        verticalLayout->setContentsMargins(11, 11, 11, 11);
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        verticalLayout->setContentsMargins(0, 0, 0, 0);
+        cross_score_label = new QLabel(verticalLayoutWidget);
+        cross_score_label->setObjectName(QStringLiteral("cross_score_label"));
+
+        verticalLayout->addWidget(cross_score_label);
+
+        cross_score = new QLCDNumber(verticalLayoutWidget);
+        cross_score->setObjectName(QStringLiteral("cross_score"));
+
+        verticalLayout->addWidget(cross_score);
+
+        circle_score_label = new QLabel(verticalLayoutWidget);
+        circle_score_label->setObjectName(QStringLiteral("circle_score_label"));
+
+        verticalLayout->addWidget(circle_score_label);
+
+        circle_score = new QLCDNumber(verticalLayoutWidget);
+        circle_score->setObjectName(QStringLiteral("circle_score"));
+
+        verticalLayout->addWidget(circle_score);
+
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 618, 21));
+        menuBar->setGeometry(QRect(0, 0, 780, 21));
+        menuBar->setDefaultUp(true);
         menuFile = new QMenu(menuBar);
         menuFile->setObjectName(QStringLiteral("menuFile"));
         MainWindow->setMenuBar(menuBar);
-        statusBar = new QStatusBar(MainWindow);
-        statusBar->setObjectName(QStringLiteral("statusBar"));
-        MainWindow->setStatusBar(statusBar);
 
         menuBar->addAction(menuFile->menuAction());
         menuFile->addAction(actionNew_game);
-        menuFile->addAction(actionC);
         menuFile->addAction(actionCredits);
         menuFile->addSeparator();
         menuFile->addAction(actionExit);
@@ -255,7 +284,6 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", nullptr));
         actionNew_game->setText(QApplication::translate("MainWindow", "New game", nullptr));
-        actionC->setText(QApplication::translate("MainWindow", "Clear score table", nullptr));
         actionCredits->setText(QApplication::translate("MainWindow", "Credits", nullptr));
         actionExit->setText(QApplication::translate("MainWindow", "Exit", nullptr));
         x1y0->setText(QString());
@@ -267,6 +295,8 @@ public:
         x2y2->setText(QString());
         x2y1->setText(QString());
         x0y0->setText(QString());
+        cross_score_label->setText(QApplication::translate("MainWindow", "Cross score:", nullptr));
+        circle_score_label->setText(QApplication::translate("MainWindow", "Circle score:", nullptr));
         menuFile->setTitle(QApplication::translate("MainWindow", "File", nullptr));
     } // retranslateUi
 
