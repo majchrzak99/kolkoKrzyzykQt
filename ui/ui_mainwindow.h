@@ -10,14 +10,15 @@
 #define UI_MAINWINDOW_H
 
 #include <QtCore/QVariant>
+#include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
-#include <QtWidgets/QToolBar>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -25,6 +26,10 @@ QT_BEGIN_NAMESPACE
 class Ui_MainWindow
 {
 public:
+    QAction *actionNew_game;
+    QAction *actionC;
+    QAction *actionCredits;
+    QAction *actionExit;
     QWidget *centralWidget;
     QWidget *gridLayoutWidget;
     QGridLayout *gridLayout;
@@ -50,7 +55,7 @@ public:
     QFrame *line_12;
     QPushButton *x0y0;
     QMenuBar *menuBar;
-    QToolBar *mainToolBar;
+    QMenu *menuFile;
     QStatusBar *statusBar;
 
     void setupUi(QMainWindow *MainWindow)
@@ -58,6 +63,14 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
         MainWindow->resize(618, 533);
+        actionNew_game = new QAction(MainWindow);
+        actionNew_game->setObjectName(QStringLiteral("actionNew_game"));
+        actionC = new QAction(MainWindow);
+        actionC->setObjectName(QStringLiteral("actionC"));
+        actionCredits = new QAction(MainWindow);
+        actionCredits->setObjectName(QStringLiteral("actionCredits"));
+        actionExit = new QAction(MainWindow);
+        actionExit->setObjectName(QStringLiteral("actionExit"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         gridLayoutWidget = new QWidget(centralWidget);
@@ -219,13 +232,19 @@ public:
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
         menuBar->setGeometry(QRect(0, 0, 618, 21));
+        menuFile = new QMenu(menuBar);
+        menuFile->setObjectName(QStringLiteral("menuFile"));
         MainWindow->setMenuBar(menuBar);
-        mainToolBar = new QToolBar(MainWindow);
-        mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
-        MainWindow->addToolBar(Qt::TopToolBarArea, mainToolBar);
         statusBar = new QStatusBar(MainWindow);
         statusBar->setObjectName(QStringLiteral("statusBar"));
         MainWindow->setStatusBar(statusBar);
+
+        menuBar->addAction(menuFile->menuAction());
+        menuFile->addAction(actionNew_game);
+        menuFile->addAction(actionC);
+        menuFile->addAction(actionCredits);
+        menuFile->addSeparator();
+        menuFile->addAction(actionExit);
 
         retranslateUi(MainWindow);
 
@@ -235,6 +254,10 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", nullptr));
+        actionNew_game->setText(QApplication::translate("MainWindow", "New game", nullptr));
+        actionC->setText(QApplication::translate("MainWindow", "Clear score table", nullptr));
+        actionCredits->setText(QApplication::translate("MainWindow", "Credits", nullptr));
+        actionExit->setText(QApplication::translate("MainWindow", "Exit", nullptr));
         x1y0->setText(QString());
         x1y2->setText(QString());
         x0y1->setText(QString());
@@ -244,6 +267,7 @@ public:
         x2y2->setText(QString());
         x2y1->setText(QString());
         x0y0->setText(QString());
+        menuFile->setTitle(QApplication::translate("MainWindow", "File", nullptr));
     } // retranslateUi
 
 };

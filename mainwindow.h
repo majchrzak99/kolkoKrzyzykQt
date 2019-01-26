@@ -44,11 +44,17 @@ private slots:
 
     void on_actionNew_game_triggered();
 
+    void on_actionCredits_triggered();
+
+    void on_actionExit_triggered();
+
 private:
     Ui::MainWindow *ui;
     game *currentGame;
     void displayMSG(msgType type);
     void displayMSG(msgType type, QString msgText);
+    void clearBoardUi();
+    void displayScore();
 };
 
 #endif // MAINWINDOW_H

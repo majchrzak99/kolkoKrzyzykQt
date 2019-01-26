@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>618</width>
-    <height>533</height>
+    <width>780</width>
+    <height>506</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -209,13 +209,45 @@ height:100%;</string>
      </item>
     </layout>
    </widget>
+   <widget class="QWidget" name="verticalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>610</x>
+      <y>20</y>
+      <width>161</width>
+      <height>451</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QLabel" name="cross_score_label">
+       <property name="text">
+        <string>Cross score:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLCDNumber" name="cross_score"/>
+     </item>
+     <item>
+      <widget class="QLabel" name="circle_score_label">
+       <property name="text">
+        <string>Circle score:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLCDNumber" name="circle_score"/>
+     </item>
+    </layout>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>618</width>
+     <width>780</width>
      <height>21</height>
     </rect>
    </property>

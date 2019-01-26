@@ -40,20 +40,42 @@ void MainWindow::displayMSG(msgType type, QString msgText){
         displayMSG(type);
     }
 }
+
+void MainWindow::clearBoardUi(){
+    ui->x0y0->setText("");
+    ui->x0y1->setText("");
+    ui->x0y2->setText("");
+    ui->x1y0->setText("");
+    ui->x1y1->setText("");
+    ui->x1y2->setText("");
+    ui->x2y0->setText("");
+    ui->x2y1->setText("");
+    ui->x2y2->setText("");
+    displayScore();
+}
+
+void MainWindow::displayScore(){
+    ui->cross_score->display(currentGame->getScore(mark::cross));
+    ui->circle_score->display(currentGame->getScore(mark::circle));
+}
+
 void MainWindow::on_x0y0_clicked()
 {
     try{
         currentGame->move(0,0);
         ui->x0y0->setText(currentGame->getPlayerName());
         if(currentGame->getWinnerName() != "none"){
-            displayMSG(msgType::winner);
+           displayMSG(msgType::winner);
+           clearBoardUi();
+           currentGame->nextTurn();
+
         }
         currentGame->changePlayer();
     }
     catch(QString ex){
         displayMSG(msgType::error, ex);
     }
-
+    displayScore();
 }
 
 void MainWindow::on_x1y0_clicked()
@@ -62,14 +84,17 @@ void MainWindow::on_x1y0_clicked()
         currentGame->move(1,0);
         ui->x1y0->setText(currentGame->getPlayerName());
         if(currentGame->getWinnerName() != "none"){
-            displayMSG(msgType::winner);
+           displayMSG(msgType::winner);
+           clearBoardUi();
+           currentGame->nextTurn();
+
         }
         currentGame->changePlayer();
     }
     catch(QString ex){
        displayMSG(msgType::error, ex);
     }
-
+    displayScore();
 }
 
 void MainWindow::on_x2y0_clicked()
@@ -78,14 +103,17 @@ void MainWindow::on_x2y0_clicked()
         currentGame->move(2,0);
         ui->x2y0->setText(currentGame->getPlayerName());
         if(currentGame->getWinnerName() != "none"){
-            displayMSG(msgType::winner);
+           displayMSG(msgType::winner);
+           clearBoardUi();
+           currentGame->nextTurn();
+
         }
         currentGame->changePlayer();
     }
     catch(QString ex){
         displayMSG(msgType::error, ex);
     }
-
+    displayScore();
 }
 
 void MainWindow::on_x0y1_clicked()
@@ -94,14 +122,17 @@ void MainWindow::on_x0y1_clicked()
         currentGame->move(0,1);
         ui->x0y1->setText(currentGame->getPlayerName());
         if(currentGame->getWinnerName() != "none"){
-            displayMSG(msgType::winner);
+           displayMSG(msgType::winner);
+           clearBoardUi();
+           currentGame->nextTurn();
+
         }
         currentGame->changePlayer();
     }
     catch(QString ex){
         displayMSG(msgType::error, ex);
     }
-
+    displayScore();
 }
 
 void MainWindow::on_x1y1_clicked()
@@ -110,14 +141,17 @@ void MainWindow::on_x1y1_clicked()
         currentGame->move(1,1);
         ui->x1y1->setText(currentGame->getPlayerName());
         if(currentGame->getWinnerName() != "none"){
-            displayMSG(msgType::winner);
+           displayMSG(msgType::winner);
+           clearBoardUi();
+           currentGame->nextTurn();
+
         }
         currentGame->changePlayer();
     }
     catch(QString ex){
         displayMSG(msgType::error, ex);
     }
-
+    displayScore();
 }
 
 void MainWindow::on_x2y1_clicked()
@@ -126,14 +160,17 @@ void MainWindow::on_x2y1_clicked()
         currentGame->move(2,1);
         ui->x2y1->setText(currentGame->getPlayerName());
         if(currentGame->getWinnerName() != "none"){
-            displayMSG(msgType::winner);
+           displayMSG(msgType::winner);
+           clearBoardUi();
+           currentGame->nextTurn();
+
         }
         currentGame->changePlayer();
     }
     catch(QString ex){
         displayMSG(msgType::error, ex);
     }
-
+    displayScore();
 }
 
 void MainWindow::on_x0y2_clicked()
@@ -142,14 +179,17 @@ void MainWindow::on_x0y2_clicked()
         currentGame->move(0,2);
         ui->x0y2->setText(currentGame->getPlayerName());
         if(currentGame->getWinnerName() != "none"){
-            displayMSG(msgType::winner);
+           displayMSG(msgType::winner);
+           clearBoardUi();
+           currentGame->nextTurn();
+
         }
         currentGame->changePlayer();
     }
     catch(QString ex){
         displayMSG(msgType::error, ex);
     }
-
+    displayScore();
 }
 
 void MainWindow::on_x1y2_clicked()
@@ -158,14 +198,17 @@ void MainWindow::on_x1y2_clicked()
         currentGame->move(1,2);
         ui->x1y2->setText(currentGame->getPlayerName());
         if(currentGame->getWinnerName() != "none"){
-            displayMSG(msgType::winner);
+           displayMSG(msgType::winner);
+           clearBoardUi();
+           currentGame->nextTurn();
+
         }
         currentGame->changePlayer();
     }
     catch(QString ex){
         displayMSG(msgType::error, ex);
     }
-
+    displayScore();
 }
 
 void MainWindow::on_x2y2_clicked()
@@ -174,17 +217,35 @@ void MainWindow::on_x2y2_clicked()
         currentGame->move(2,2);
         ui->x2y2->setText(currentGame->getPlayerName());
         if(currentGame->getWinnerName() != "none"){
-            displayMSG(msgType::winner);
+           displayMSG(msgType::winner);
+           clearBoardUi();
+           currentGame->nextTurn();
+
         }
         currentGame->changePlayer();
     }
     catch(QString ex){
         displayMSG(msgType::error, ex);
     }
-
+    displayScore();
 }
 
 void MainWindow::on_actionNew_game_triggered()
 {
-    currentGame->newGame();
+    delete currentGame;
+    currentGame = new game;
+    clearBoardUi();
+}
+
+void MainWindow::on_actionCredits_triggered()
+{
+    QMessageBox msg;
+    msg.setWindowTitle("Credits");
+    msg.setText("Created by Marcin Majchrzak");
+    msg.exec();
+}
+
+void MainWindow::on_actionExit_triggered()
+{
+    qApp->exit();
 }

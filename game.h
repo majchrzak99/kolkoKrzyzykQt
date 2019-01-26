@@ -15,7 +15,7 @@ public:
     game();
     mark boardValue(unsigned short posX, unsigned short posY);
     void setBoardValue(unsigned short posX, unsigned short posY, mark value);
-    void setupBoard();
+
     mark getPlayer();
     QString getPlayerName();
     void setPlayer(mark player);
@@ -23,11 +23,15 @@ public:
     void changePlayer();
     mark checkWin();
     QString getWinnerName();
-    void newGame();
+    void nextTurn();
+    unsigned short getScore(mark player);
 private:
+    void setupBoard();
     QVector<QVector<mark>> board;
     mark player;
     mark startingPlayer;
+    unsigned short scoreCross;
+    unsigned short scoreCircle;
 
 };
 
