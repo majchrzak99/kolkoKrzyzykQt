@@ -5,6 +5,11 @@
 #include "game.h"
 #include <QMessageBox>
 
+enum class msgType{
+    winner,
+    error
+};
+
 namespace Ui {
 class MainWindow;
 }
@@ -15,6 +20,7 @@ class MainWindow : public QMainWindow
 
 public:
     explicit MainWindow(QWidget *parent = nullptr);
+
     ~MainWindow();
 
 private slots:
@@ -36,9 +42,13 @@ private slots:
 
     void on_x2y2_clicked();
 
+    void on_actionNew_game_triggered();
+
 private:
     Ui::MainWindow *ui;
     game *currentGame;
+    void displayMSG(msgType type);
+    void displayMSG(msgType type, QString msgText);
 };
 
 #endif // MAINWINDOW_H

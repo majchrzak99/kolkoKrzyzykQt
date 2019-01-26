@@ -23,9 +23,11 @@ public:
     void changePlayer();
     mark checkWin();
     QString getWinnerName();
+    void newGame();
 private:
     QVector<QVector<mark>> board;
     mark player;
+    mark startingPlayer;
 
 };
 

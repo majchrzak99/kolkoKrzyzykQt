@@ -3,6 +3,7 @@
 game::game()
 {
     player = mark::cross;
+    startingPlayer =  mark::cross;
     setupBoard();
 }
 
@@ -87,10 +88,21 @@ mark game::checkWin(){
 QString game::getWinnerName(){
     mark winner = checkWin();
     if(winner == mark::cross){
-        return "Won cross";
+        return "Cross won";
     }
     if(winner == mark::circle){
-        return "Won circle";
+        return "Circle won";
     }
     return "none";
+}
+
+void game::newGame(){
+    if(startingPlayer == mark::cross){
+        startingPlayer = mark::circle;
+        player = mark::circle;
+    }else{
+        startingPlayer = mark::cross;
+        player = mark::cross;
+    }
+    this->setupBoard();
 }
