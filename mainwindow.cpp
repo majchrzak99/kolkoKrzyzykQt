@@ -56,15 +56,15 @@ void MainWindow::displayMSG(msgType type, QString msgText){
 }
 
 void MainWindow::clearBoardUi(){
-    ui->x0y0->setText("");
-    ui->x0y1->setText("");
-    ui->x0y2->setText("");
-    ui->x1y0->setText("");
-    ui->x1y1->setText("");
-    ui->x1y2->setText("");
-    ui->x2y0->setText("");
-    ui->x2y1->setText("");
-    ui->x2y2->setText("");
+    ui->x0y0->setStyleSheet("* {background-image:none; width:100%; height:100%; }");
+    ui->x0y1->setStyleSheet("* {background-image:none; width:100%; height:100%; }");
+    ui->x0y2->setStyleSheet("* {background-image:none; width:100%; height:100%; }");
+    ui->x1y0->setStyleSheet("* {background-image:none; width:100%; height:100%; }");
+    ui->x1y1->setStyleSheet("* {background-image:none; width:100%; height:100%; }");
+    ui->x1y2->setStyleSheet("* {background-image:none; width:100%; height:100%; }");
+    ui->x2y0->setStyleSheet("* {background-image:none; width:100%; height:100%; }");
+    ui->x2y1->setStyleSheet("* {background-image:none; width:100%; height:100%; }");
+    ui->x2y2->setStyleSheet("* {background-image:none; width:100%; height:100%; }");
     displayScore();
 }
 
