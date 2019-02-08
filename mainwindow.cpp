@@ -73,11 +73,16 @@ void MainWindow::displayScore(){
     ui->circle_score->display(currentGame->getScore(mark::circle));
 }
 
-void MainWindow::on_x0y0_clicked()
-{
+void MainWindow::clickedButton(QPushButton* button, unsigned short posX, unsigned short posY){
     try{
-        currentGame->move(0,0);
-        ui->x0y0->setText(currentGame->getPlayerName());
+        currentGame->move(posX,posY);
+        // button->setText(currentGame->getPlayerName());
+        if(currentGame->getPlayer()==mark::cross){
+            button->setStyleSheet("* {background-image: url(:/icons/icons/x.png);width:100%;height:100%;background-repeat:none;background-position:center;}");
+        }
+        if(currentGame->getPlayer()==mark::circle){
+            button->setStyleSheet("* {background-image: url(:/icons/icons/o.png);width:100%;height:100%;background-repeat:none;background-position:center;}");
+        }
         if(currentGame->getWinnerName() != "none"){
            displayMSG(msgType::winner);
            clearBoardUi();
@@ -95,207 +100,51 @@ void MainWindow::on_x0y0_clicked()
         displayMSG(msgType::error, ex);
     }
     displayScore();
+}
+
+void MainWindow::on_x0y0_clicked()
+{
+    clickedButton(ui->x0y0,0,0);
 }
 
 void MainWindow::on_x1y0_clicked()
 {
-    try{
-        currentGame->move(1,0);
-        ui->x1y0->setText(currentGame->getPlayerName());
-        if(currentGame->getWinnerName() != "none"){
-           displayMSG(msgType::winner);
-           clearBoardUi();
-           currentGame->nextTurn();
-
-        }else{
-            if(currentGame->isFullBoard()){
-                displayMSG(msgType::fullBoard);
-                clearBoardUi();
-                currentGame->nextTurn();
-            }
-        }
-
-        currentGame->changePlayer();
-    }
-    catch(QString ex){
-       displayMSG(msgType::error, ex);
-    }
-    displayScore();
+    clickedButton(ui->x1y0,1,0);
 }
 
 void MainWindow::on_x2y0_clicked()
 {
-    try{
-        currentGame->move(2,0);
-        ui->x2y0->setText(currentGame->getPlayerName());
-        if(currentGame->getWinnerName() != "none"){
-           displayMSG(msgType::winner);
-           clearBoardUi();
-           currentGame->nextTurn();
-
-        }else{
-            if(currentGame->isFullBoard()){
-                displayMSG(msgType::fullBoard);
-                clearBoardUi();
-                currentGame->nextTurn();
-            }
-        }
-        currentGame->changePlayer();
-    }
-    catch(QString ex){
-        displayMSG(msgType::error, ex);
-    }
-    displayScore();
+    clickedButton(ui->x2y0,2,0);
 }
 
 void MainWindow::on_x0y1_clicked()
 {
-    try{
-        currentGame->move(0,1);
-        ui->x0y1->setText(currentGame->getPlayerName());
-        if(currentGame->getWinnerName() != "none"){
-           displayMSG(msgType::winner);
-           clearBoardUi();
-           currentGame->nextTurn();
-
-        }else{
-            if(currentGame->isFullBoard()){
-                displayMSG(msgType::fullBoard);
-                clearBoardUi();
-                currentGame->nextTurn();
-            }
-        }
-        currentGame->changePlayer();
-    }
-    catch(QString ex){
-        displayMSG(msgType::error, ex);
-    }
-    displayScore();
+    clickedButton(ui->x0y1,0,1);
 }
 
 void MainWindow::on_x1y1_clicked()
 {
-    try{
-        currentGame->move(1,1);
-        ui->x1y1->setText(currentGame->getPlayerName());
-        if(currentGame->getWinnerName() != "none"){
-           displayMSG(msgType::winner);
-           clearBoardUi();
-           currentGame->nextTurn();
-
-        }else{
-            if(currentGame->isFullBoard()){
-                displayMSG(msgType::fullBoard);
-                clearBoardUi();
-                currentGame->nextTurn();
-            }
-        }
-        currentGame->changePlayer();
-    }
-    catch(QString ex){
-        displayMSG(msgType::error, ex);
-    }
-    displayScore();
+    clickedButton(ui->x1y1,1,1);
 }
 
 void MainWindow::on_x2y1_clicked()
 {
-    try{
-        currentGame->move(2,1);
-        ui->x2y1->setText(currentGame->getPlayerName());
-        if(currentGame->getWinnerName() != "none"){
-           displayMSG(msgType::winner);
-           clearBoardUi();
-           currentGame->nextTurn();
-
-        }else{
-            if(currentGame->isFullBoard()){
-                displayMSG(msgType::fullBoard);
-                clearBoardUi();
-                currentGame->nextTurn();
-            }
-        }
-        currentGame->changePlayer();
-    }
-    catch(QString ex){
-        displayMSG(msgType::error, ex);
-    }
-    displayScore();
+    clickedButton(ui->x2y1,2,1);
 }
 
 void MainWindow::on_x0y2_clicked()
 {
-    try{
-        currentGame->move(0,2);
-        ui->x0y2->setText(currentGame->getPlayerName());
-        if(currentGame->getWinnerName() != "none"){
-           displayMSG(msgType::winner);
-           clearBoardUi();
-           currentGame->nextTurn();
-
-        }else{
-            if(currentGame->isFullBoard()){
-                displayMSG(msgType::fullBoard);
-                clearBoardUi();
-                currentGame->nextTurn();
-            }
-        }
-        currentGame->changePlayer();
-    }
-    catch(QString ex){
-        displayMSG(msgType::error, ex);
-    }
-    displayScore();
+    clickedButton(ui->x0y2,0,2);
 }
 
 void MainWindow::on_x1y2_clicked()
 {
-    try{
-        currentGame->move(1,2);
-        ui->x1y2->setText(currentGame->getPlayerName());
-        if(currentGame->getWinnerName() != "none"){
-           displayMSG(msgType::winner);
-           clearBoardUi();
-           currentGame->nextTurn();
-
-        }else{
-            if(currentGame->isFullBoard()){
-                displayMSG(msgType::fullBoard);
-                clearBoardUi();
-                currentGame->nextTurn();
-            }
-        }
-        currentGame->changePlayer();
-    }
-    catch(QString ex){
-        displayMSG(msgType::error, ex);
-    }
-    displayScore();
+    clickedButton(ui->x1y2,1,2);
 }
 
 void MainWindow::on_x2y2_clicked()
 {
-    try{
-        currentGame->move(2,2);
-        ui->x2y2->setText(currentGame->getPlayerName());
-        if(currentGame->getWinnerName() != "none"){
-           displayMSG(msgType::winner);
-           clearBoardUi();
-           currentGame->nextTurn();
-
-        }else{
-            if(currentGame->isFullBoard()){
-                displayMSG(msgType::fullBoard);
-                clearBoardUi();
-                currentGame->nextTurn();
-            }
-        }
-        currentGame->changePlayer();
-    }
-    catch(QString ex){
-        displayMSG(msgType::error, ex);
-    }
-    displayScore();
+    clickedButton(ui->x2y2,2,2);
 }
 
 void MainWindow::on_actionNew_game_triggered()

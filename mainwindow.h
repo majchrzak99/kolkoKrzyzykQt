@@ -56,6 +56,7 @@ private:
     void displayMSG(msgType type, QString msgText);
     void clearBoardUi();
     void displayScore();
+    void clickedButton(QPushButton* button, unsigned short posX, unsigned short posY);
 };
 
 #endif // MAINWINDOW_H
